@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 class App extends Component {
   componentDidMount() {
     // 处理刷新的时候状态变回原来
+    // 2019.2.10 test上传
     const { loginname, avatar_url } = sessionStorage
     const { creatLogin } = this.props
     const bool = loginname && avatar_url ? true : false
