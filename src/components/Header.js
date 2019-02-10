@@ -32,7 +32,7 @@ class Header extends Component {
           {userInfo ? (
             <div>
               <img src={userInfo.avatar_url} alt='' />
-              <button onClick={this.logout}>登出</button>
+              <button onClick={this.logout}>注销</button>
             </div>
           ) : (
             <div>
