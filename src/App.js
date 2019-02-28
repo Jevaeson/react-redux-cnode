@@ -16,18 +16,15 @@ class App extends Component {
     creatLogin(bool)
   }
   render() {
+    const { creatLogin } = this.props
     return (
       <BrowserRouter>
         <div style={{ backgroundColor: '#e1e1e1', paddingBottom: '20px' }}>
-          <Header setLogin={this.setLogin} />
+          <Header creatLogin={creatLogin} />
           <Main />
         </div>
       </BrowserRouter>
     )
-  }
-  setLogin = bool => {
-    const { creatLogin } = this.props
-    creatLogin(bool)
   }
 }
 

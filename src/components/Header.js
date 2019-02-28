@@ -51,7 +51,7 @@ class Header extends Component {
   }
   login = () => {
     const { token } = this.state
-    const { setLogin } = this.props
+    const { creatLogin } = this.props
     if (token.trim()) {
       axios
         .post('https://cnodejs.org/api/v1/accesstoken', {
@@ -72,7 +72,7 @@ class Header extends Component {
           sessionStorage.avatar_url = avatar_url
           sessionStorage.id = id
           sessionStorage.token = token
-          setLogin(true)
+          creatLogin(true)
           this.setState({
             userInfo: {
               loginname,
@@ -91,8 +91,8 @@ class Header extends Component {
       userInfo: null
     })
     sessionStorage.clear()
-    const { setLogin } = this.props
-    setLogin(false)
+    const { creatLogin } = this.props
+    creatLogin(false)
   }
 }
 

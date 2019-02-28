@@ -5,18 +5,21 @@ import { getUserInfo } from '../actions'
 import { connect } from 'react-redux'
 
 class UserInfo extends React.Component {
+  state = {}
   componentDidMount() {
     const { loginname } = this.props.match.params
     const { getUserInfo } = this.props
     getUserInfo(loginname)
   }
-  // componentWillReceiveProps(nextProps) {
+  // static getDerivedStateFromProps(nextProps, state) {
+  //   console.log(nextProps, state)
   //   const { loginname } = nextProps.match.params
   //   const { getUserInfo } = this.props
   //   getUserInfo(loginname)
+  //   return null
   // }
   render() {
-    const { userinfo } = this.props
+    const { userinfo, getUserInfo } = this.props
     console.log(userinfo)
     const intro = userinfo ? (
       <div className='userinfo'>
@@ -59,7 +62,12 @@ class UserInfo extends React.Component {
             : userinfo.recent_replies
           ).map(item => (
             <div className='recent_replies' key={item.id}>
-              <Link to={`/user/${item.author.loginname}`}>
+              <Link
+                to={`/user/${item.author.loginname}`}
+                onClick={() => {
+                  getUserInfo(item.author.loginname)
+                }}
+              >
                 <img src={item.author.avatar_url} alt='' />
               </Link>
               <p>
